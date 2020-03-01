@@ -11,6 +11,7 @@
           <e p="CreateSlide.cs" t="Include" />
           <e p="MyEditorWindow.cs" t="Include" />
           <e p="OneColumnEditor.cs" t="Include" />
+          <e p="PresentationController.cs" t="Include" />
           <e p="SlideEditorBase.cs" t="Include" />
           <e p="TitleSlideEditor.cs" t="Include" />
         </e>

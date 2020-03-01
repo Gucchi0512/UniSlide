@@ -8,16 +8,21 @@ using UnityEngine;
 public class PresentationManager : MonoBehaviour {
     static public PresentationManager instance;
     [SerializeField] private GameObject m_Slides;
-    private int m_currentSlide = 0;
-    private int m_slideNum = 0;
+    private int m_CurrentSlide = 0;
+    private int m_SlideNum = 0;
     public GameObject Slides {
         get => m_Slides;
         set => m_Slides = value;
     }
 
+    public int CurrentSlide {
+        get => m_CurrentSlide;
+        set => m_CurrentSlide = value;
+    }
+
     private void Start() {
-        m_slideNum = m_Slides.transform.childCount;
-        for (int count = 1; count < m_slideNum; count++) {
+        m_SlideNum = m_Slides.transform.childCount;
+        for (int count = 1; count < m_SlideNum; count++) {
             m_Slides.transform.GetChild(count).gameObject.SetActive(false);
         }
     }
@@ -28,12 +33,12 @@ public class PresentationManager : MonoBehaviour {
         
     }
 
-    private void ChangeSlide(int control) {
-        int nextSlide = m_currentSlide + control;
-        if (nextSlide >= 0 && nextSlide < m_slideNum) {
-            m_Slides.transform.GetChild(m_currentSlide).gameObject.SetActive(false);
+    public void ChangeSlide(int control) {
+        int nextSlide = m_CurrentSlide + control;
+        if (nextSlide >= 0 && nextSlide < m_SlideNum) {
+            m_Slides.transform.GetChild(m_CurrentSlide).gameObject.SetActive(false);
             m_Slides.transform.GetChild(nextSlide).gameObject.SetActive(true);
-            m_currentSlide = nextSlide;
+            m_CurrentSlide = nextSlide;
         }
         
     }

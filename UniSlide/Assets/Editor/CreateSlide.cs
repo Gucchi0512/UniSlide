@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Editor;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ using Object = UnityEngine.Object;
 
 public class CreateSlide : EditorWindow {
     
-    static private PresentationManager m_pManager;
+    static private PresentationManager m_PManager;
     private string[] m_SlideTypes = new string[] {
         "TitleSlide",
         "OneColumnSlide"
@@ -33,22 +34,27 @@ public class CreateSlide : EditorWindow {
             var slides = new GameObject("Slides");
             slides.transform.parent = manager.transform;
             preMan.Slides = slides;
-            m_pManager = preMan;
+            m_PManager = preMan;
         } else {
-            m_pManager = obj.GetComponent<PresentationManager>();
+            m_PManager = obj.GetComponent<PresentationManager>();
         }
     }
 
     private void OnGUI() {
+        int slideCount = m_PManager.Slides.transform.childCount;
         selectedIndex = EditorGUILayout.Popup("SlideType", selectedIndex, m_SlideTypes);
         var slide = Resources.Load("SlidePrefabs/" + m_SlideTypes[selectedIndex]) as GameObject;
         string[] name = Directory.GetFiles(directoryPath, slide.name + ".png");
         Texture2D preview = AssetDatabase.LoadAssetAtPath(name[0], typeof(Texture2D)) as Texture2D;
         if (GUILayout.Button("Create New Slide")) {
             var obj = Instantiate(slide);
-            obj.name = m_Slidename + m_pManager.Slides.transform.childCount;
-            obj.transform.parent = m_pManager.Slides.transform;
+            obj.name = m_Slidename + slideCount;
+            obj.transform.parent = m_PManager.Slides.transform;
             Undo.RegisterCreatedObjectUndo(obj, "Create New Slide");
+            if (slideCount != 0) {
+                m_PManager.Slides.transform.GetChild(slideCount-1).gameObject.SetActive(false);
+            }
+            
         }
         GUILayout.Label("Slide Preview");
         EditorGUI.DrawPreviewTexture(new Rect(10, 70, 512, 384), preview);
