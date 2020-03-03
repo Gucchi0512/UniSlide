@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1530848669394120333}
   m_Layer: 5
   m_Name: TItleText
-  m_TagString: Untagged
+  m_TagString: TitleText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,8 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33488ef43b5224e88f66b95bbfacc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TitleText: {fileID: 1530848669394120333}
-  m_BGImage: {fileID: 1530848671205182313}
   m_FirstColumn: {fileID: 1530848670681511733}
 --- !u!1 &1530848670681511734
 GameObject:
@@ -137,7 +135,7 @@ GameObject:
   - component: {fileID: 1530848670681511733}
   m_Layer: 5
   m_Name: FirstColumn
-  m_TagString: Untagged
+  m_TagString: Column
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,7 +215,7 @@ GameObject:
   - component: {fileID: 1530848670962518619}
   m_Layer: 5
   m_Name: SlideCanvas
-  m_TagString: Untagged
+  m_TagString: SlideCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -253,7 +251,7 @@ Canvas:
   m_GameObject: {fileID: 1530848670962518613}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -317,7 +315,7 @@ GameObject:
   - component: {fileID: 1530848671205182313}
   m_Layer: 5
   m_Name: BGImage
-  m_TagString: Untagged
+  m_TagString: BGImage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

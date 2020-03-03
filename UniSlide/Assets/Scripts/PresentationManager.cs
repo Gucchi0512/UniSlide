@@ -21,7 +21,6 @@ public class PresentationManager : MonoBehaviour {
     }
 
     private void Start() {
-        m_SlideNum = m_Slides.transform.childCount;
         for (int count = 1; count < m_SlideNum; count++) {
             m_Slides.transform.GetChild(count).gameObject.SetActive(false);
         }
@@ -35,7 +34,7 @@ public class PresentationManager : MonoBehaviour {
 
     public void ChangeSlide(int control) {
         int nextSlide = m_CurrentSlide + control;
-        if (nextSlide >= 0 && nextSlide < m_SlideNum) {
+        if (nextSlide >= 0 && nextSlide < m_Slides.transform.childCount) {
             m_Slides.transform.GetChild(m_CurrentSlide).gameObject.SetActive(false);
             m_Slides.transform.GetChild(nextSlide).gameObject.SetActive(true);
             m_CurrentSlide = nextSlide;

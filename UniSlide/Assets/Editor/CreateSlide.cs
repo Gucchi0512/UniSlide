@@ -38,10 +38,17 @@ public class CreateSlide : EditorWindow {
         } else {
             m_PManager = obj.GetComponent<PresentationManager>();
         }
+        GameObject cam = GameObject.FindWithTag("SlideCamera");
+        if (cam == null) {
+            cam = Resources.Load("SlideCamera") as GameObject;
+            cam = Instantiate(cam);
+        }
     }
 
     private void OnGUI() {
+        int currentSlide = m_PManager.CurrentSlide;
         int slideCount = m_PManager.Slides.transform.childCount;
+        
         selectedIndex = EditorGUILayout.Popup("SlideType", selectedIndex, m_SlideTypes);
         var slide = Resources.Load("SlidePrefabs/" + m_SlideTypes[selectedIndex]) as GameObject;
         string[] name = Directory.GetFiles(directoryPath, slide.name + ".png");
@@ -52,9 +59,9 @@ public class CreateSlide : EditorWindow {
             obj.transform.parent = m_PManager.Slides.transform;
             Undo.RegisterCreatedObjectUndo(obj, "Create New Slide");
             if (slideCount != 0) {
-                m_PManager.Slides.transform.GetChild(slideCount-1).gameObject.SetActive(false);
+                m_PManager.Slides.transform.GetChild(currentSlide).gameObject.SetActive(false);
+                m_PManager.CurrentSlide = currentSlide+1;
             }
-            
         }
         GUILayout.Label("Slide Preview");
         EditorGUI.DrawPreviewTexture(new Rect(10, 70, 512, 384), preview);
