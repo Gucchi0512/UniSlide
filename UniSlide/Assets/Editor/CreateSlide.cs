@@ -38,6 +38,7 @@ public class CreateSlide : EditorWindow {
         } else {
             m_PManager = obj.GetComponent<PresentationManager>();
         }
+        m_PManager.CurrentSlide = m_PManager.Slides.transform.childCount - 1;
         GameObject cam = GameObject.FindWithTag("SlideCamera");
         if (cam == null) {
             cam = Resources.Load("SlideCamera") as GameObject;
@@ -46,8 +47,8 @@ public class CreateSlide : EditorWindow {
     }
 
     private void OnGUI() {
-        int currentSlide = m_PManager.CurrentSlide;
         int slideCount = m_PManager.Slides.transform.childCount;
+        int currentSlide = m_PManager.CurrentSlide;
         
         selectedIndex = EditorGUILayout.Popup("SlideType", selectedIndex, m_SlideTypes);
         var slide = Resources.Load("SlidePrefabs/" + m_SlideTypes[selectedIndex]) as GameObject;

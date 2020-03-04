@@ -121,6 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33488ef43b5224e88f66b95bbfacc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SlideCanvas: {fileID: 1530848670962518617}
+  m_TitleText: {fileID: 1530848669394120333}
+  m_BGImage: {fileID: 1530848671205182313}
   m_FirstColumn: {fileID: 1530848670681511733}
 --- !u!1 &1530848670681511734
 GameObject:

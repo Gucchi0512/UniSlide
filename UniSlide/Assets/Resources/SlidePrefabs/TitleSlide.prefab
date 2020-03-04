@@ -372,4 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61d4d037e1d71f54eb20f996bfb2de6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SlideCanvas: {fileID: 6694741320267452207}
+  m_TitleText: {fileID: 6694741321314667515}
+  m_BGImage: {fileID: 6694741320384772633}
   m_PresenterName: {fileID: 6694741320626887276}
