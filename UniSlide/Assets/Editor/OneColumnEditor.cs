@@ -8,7 +8,7 @@ namespace Editor {
         public override void OnInspectorGUI() {
             base.OnInspectorGUI();
             OneColumn slide = target as OneColumn;
-            var firstColumn = slide.FirstColumn;
+            var firstColumn = slide.Column;
 
             EditorGUILayout.LabelField("FirstColumn");
             firstColumn.text = EditorGUILayout.TextArea(firstColumn.text, GUILayout.Height(100));

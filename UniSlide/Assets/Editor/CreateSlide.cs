@@ -14,7 +14,8 @@ public class CreateSlide : EditorWindow {
     static private PresentationManager m_PManager;
     private string[] m_SlideTypes = new string[] {
         "TitleSlide",
-        "OneColumnSlide"
+        "OneColumnSlide",
+        "TwoColumnSlide"
     };
     private string m_Slidename = "Slide:P";
     [SerializeField] private Object m_PreviewDirectory;
@@ -44,6 +45,7 @@ public class CreateSlide : EditorWindow {
             cam = Resources.Load("SlideCamera") as GameObject;
             cam = Instantiate(cam);
         }
+        EditorWindow.GetWindow<PresentationController>("Controller");
     }
 
     private void OnGUI() {
@@ -61,8 +63,8 @@ public class CreateSlide : EditorWindow {
             Undo.RegisterCreatedObjectUndo(obj, "Create New Slide");
             if (slideCount != 0) {
                 m_PManager.Slides.transform.GetChild(currentSlide).gameObject.SetActive(false);
-                m_PManager.CurrentSlide = currentSlide+1;
             }
+            m_PManager.CurrentSlide = currentSlide+1;
         }
         GUILayout.Label("Slide Preview");
         EditorGUI.DrawPreviewTexture(new Rect(10, 70, 512, 384), preview);

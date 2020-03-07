@@ -9,8 +9,6 @@ using UnityEditor;
 public class SlideEditorBase : UnityEditor.Editor {
     
     public override void OnInspectorGUI() {
-        base.OnInspectorGUI();
-        
         SlideBase slide = target as SlideBase;
         var titleText = slide.TitleText;
         slide.BgImage.sprite = EditorGUILayout.ObjectField("BackGroundImage", slide.BgImage.sprite, typeof(Sprite), true) as Sprite;

@@ -6,14 +6,10 @@ using UnityEngine;
 namespace Editor {
     public class PresentationController : EditorWindow {
 
-        private PresentationManager m_PManager;
-        private GameObject m_MainCamera;
-        private GameObject m_SlideCamera;
-        [MenuItem("Window/Presentation/PresentationController")]
-        private static void Open() {
-            EditorWindow.GetWindow<PresentationController>("Controller");
-        }
-        
+        static private PresentationManager m_PManager;
+        static private GameObject m_MainCamera;
+        static private GameObject m_SlideCamera;
+
         private void OnEnable() {
             m_PManager = GameObject.Find("PresentationManager").GetComponent<PresentationManager>();
             m_MainCamera = GameObject.FindWithTag("MainCamera");
@@ -27,13 +23,17 @@ namespace Editor {
 
         private void OnGUI() {
             EditorGUILayout.BeginHorizontal();
-                if(GUILayout.Button("◀")) m_PManager.ChangeSlide(-1);
-                if(GUILayout.Button("▶")) m_PManager.ChangeSlide(1);
+                if(GUILayout.Button("Prev")) m_PManager.ChangeSlide(-1);
+                if(GUILayout.Button("Next")) m_PManager.ChangeSlide(1);
             EditorGUILayout.EndHorizontal();
             if (GUILayout.Button("SwitchCamera")) {
                 m_MainCamera.SetActive(!m_MainCamera.activeSelf);
                 m_SlideCamera.SetActive(!m_SlideCamera.activeSelf);
             }
+        }
+
+        private void OnDestroy() {
+            m_MainCamera.SetActive(true);
         }
     }
 }

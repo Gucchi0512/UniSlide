@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using UniRx;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -26,9 +27,21 @@ public class SlideBase : MonoBehaviour {
         set => m_BGImage = value;
     }
 
-    private void OnEnable() {
+    protected void Initialize() {
+        m_SlideCanvas = this.transform.GetChild(0).GetComponent<Canvas>();
         m_SlideCanvas.worldCamera = GameObject.FindWithTag("SlideCamera").GetComponent<Camera>();
-    }
-
-    
+        var canvas = m_SlideCanvas.gameObject;
+        foreach (Transform child in canvas.transform) {
+            switch (child.tag) {
+                case "BGImage":
+                    m_BGImage = child.gameObject.GetComponent<Image>();
+                    break;
+                case "TitleText":
+                    m_TitleText = child.gameObject.GetComponent<Text>();
+                    break;
+                default:
+                    break;
+            }
+        }
+    } 
 }

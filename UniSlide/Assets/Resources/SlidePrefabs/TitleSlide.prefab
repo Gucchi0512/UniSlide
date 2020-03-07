@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 6694741320626887276}
   m_Layer: 5
   m_Name: PresenterName
-  m_TagString: Untagged
+  m_TagString: PresenterName
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -375,4 +375,3 @@ MonoBehaviour:
   m_SlideCanvas: {fileID: 6694741320267452207}
   m_TitleText: {fileID: 6694741321314667515}
   m_BGImage: {fileID: 6694741320384772633}
-  m_PresenterName: {fileID: 6694741320626887276}
