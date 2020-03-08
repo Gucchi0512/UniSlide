@@ -6,10 +6,9 @@ using UnityEngine;
 namespace Editor {
     public class PresentationController : EditorWindow {
 
-        static private PresentationManager m_PManager;
-        static private GameObject m_MainCamera;
-        static private GameObject m_SlideCamera;
-
+        private PresentationManager m_PManager;
+        private GameObject m_MainCamera;
+        private GameObject m_SlideCamera;
         private void OnEnable() {
             m_PManager = GameObject.Find("PresentationManager").GetComponent<PresentationManager>();
             m_MainCamera = GameObject.FindWithTag("MainCamera");
@@ -17,8 +16,8 @@ namespace Editor {
             if (m_PManager == null) Debug.LogError("Manager not found for controller");
             if (m_MainCamera == null) Debug.LogError("MainCamera not found for controller");
             if (m_SlideCamera == null) Debug.LogError("SlideCamera not found for controller");
-            m_MainCamera.SetActive(false);
-            m_SlideCamera.SetActive(true);
+            m_MainCamera.GetComponent<Camera>().enabled = false;
+            m_SlideCamera.GetComponent<Camera>().enabled = true;
         }
 
         private void OnGUI() {
@@ -27,13 +26,12 @@ namespace Editor {
                 if(GUILayout.Button("Next")) m_PManager.ChangeSlide(1);
             EditorGUILayout.EndHorizontal();
             if (GUILayout.Button("SwitchCamera")) {
-                m_MainCamera.SetActive(!m_MainCamera.activeSelf);
-                m_SlideCamera.SetActive(!m_SlideCamera.activeSelf);
+                var maincam = m_MainCamera.GetComponent<Camera>();
+                var slidecam = m_SlideCamera.GetComponent<Camera>();
+                maincam.enabled = !maincam.enabled;
+                slidecam.enabled = !slidecam.enabled;
             }
         }
 
-        private void OnDestroy() {
-            m_MainCamera.SetActive(true);
-        }
     }
 }

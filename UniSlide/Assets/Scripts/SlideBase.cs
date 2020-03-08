@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using UniRx;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;

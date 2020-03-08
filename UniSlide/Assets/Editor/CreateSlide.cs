@@ -27,6 +27,8 @@ public class CreateSlide : EditorWindow {
 
     [MenuItem("Window/Presentation/CreateSlide")]
     static void Open() {
+        EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+        
         EditorWindow.GetWindow<CreateSlide>("CreateSlide");
         GameObject obj = GameObject.Find("PresentationManager");
         if (obj == null) {
@@ -68,5 +70,14 @@ public class CreateSlide : EditorWindow {
         }
         GUILayout.Label("Slide Preview");
         EditorGUI.DrawPreviewTexture(new Rect(10, 70, 512, 384), preview);
+    }
+
+     private static void OnPlayModeStateChanged(PlayModeStateChange state) {
+         if (state == PlayModeStateChange.ExitingEditMode) {
+             CreateSlide createSlide = GetWindow<CreateSlide>();
+             PresentationController controller = GetWindow<PresentationController>();
+             if(createSlide!=null) createSlide.Close();
+             if(controller!=null) controller.Close();
+         }
     }
 }
