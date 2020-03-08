@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\gucch\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\gucch\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_UniSlide.-116398676.00" t="ExcludeRecursive" />
+    <e p="E:\UnityProject\UniSlide\UniSlide" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Editor" t="Include">
+          <e p="CreateSlide.cs" t="Include" />
+          <e p="MyEditorWindow.cs" t="Include" />
+          <e p="OneColumnEditor.cs" t="Include" />
+          <e p="PresentationController.cs" t="Include" />
+          <e p="SlideEditorBase.cs" t="Include" />
+          <e p="TitleSlideEditor.cs" t="Include" />
+          <e p="TwoColumnEditor.cs" t="Include" />
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="OneColumn.cs" t="Include" />
+          <e p="PresentationManager.cs" t="Include" />
+          <e p="SlideBase.cs" t="Include" />
+          <e p="TItleSlide.cs" t="Include" />
+          <e p="TwoColumn.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="UniSlide.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
